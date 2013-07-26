@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+THIS=$(basename $0)
+DIR="$( cd -P "$( dirname "$0" )" && pwd )"
+CURR_FOLDER=`pwd`
+LOGFOLDER="${CURR_FOLDER}/.atirax"
+
+if [ ! -d $LOGFOLDER ]
+then
+    mkdir -p $LOGFOLDER
+fi
+
+LOGFILENAME="${1##*/}_$(date +%F_%H%M%S)"
+OUT="${$LOGFOLDER}/${LOGFILENAME}_stdout.log"
+ERR="${$LOGFOLDER}/${LOGFILENAME}_stderr.log"
+
+echo "== Atirax $@ ==" > $OUT
+echo "== Atirax $@ ==" > $ERR
+
+nohup "$@" >>${OUT} 2>>${ERR} &
+
+exit

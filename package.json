@@ -1,0 +1,16 @@
+{
+  "name": "atirax",
+  "description": "launch background process",
+  "version": "0.1.0",
+  "author": "Thiago Lagden <lagden@gmail.com>",
+  "homepage": "https://github.com/lagden/atirax",
+  "keywords": ["background", "nohup", "binary"],
+  "bin": {
+    "atirax": "./bin/atirax"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lagden/atirax.git"
+  },
+  "license": "MIT"
+}
