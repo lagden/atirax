@@ -11,8 +11,8 @@ then
 fi
 
 LOGFILENAME="${1##*/}_$(date +%F_%H%M%S)"
-OUT="${$LOGFOLDER}/${LOGFILENAME}_stdout.log"
-ERR="${$LOGFOLDER}/${LOGFILENAME}_stderr.log"
+OUT=${LOGFOLDER}/${LOGFILENAME}_stdout.log
+ERR=${LOGFOLDER}/${LOGFILENAME}_stderr.log
 
 echo "== Atirax $@ ==" > $OUT
 echo "== Atirax $@ ==" > $ERR
