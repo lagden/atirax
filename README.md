@@ -1,6 +1,6 @@
 # Atirax
 
-Launch background process...
+Launch background process.
 
 ## Installation
 

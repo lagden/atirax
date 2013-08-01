@@ -1,10 +1,10 @@
 
 PREFIX ?= /usr/local
 
-install: bin/n
+install: bin/atirax
 	cp $< $(PREFIX)/$<
 
 uninstall:
-	rm -f $(PREFIX)/bin/n
+	rm -f $(PREFIX)/bin/atirax
 
 .PHONY: install uninstall

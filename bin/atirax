@@ -10,6 +10,10 @@ then
     mkdir -p $LOGFOLDER
 fi
 
+log() {
+  printf "  \033[36m%10s\033[0m : \033[90m%s\033[0m\n" $1 $2
+}
+
 LOGFILENAME="${1##*/}_$(date +%F_%H%M%S)"
 OUT=${LOGFOLDER}/${LOGFILENAME}_stdout.log
 ERR=${LOGFOLDER}/${LOGFILENAME}_stderr.log
@@ -18,5 +22,7 @@ echo "== Atirax $@ ==" > $OUT
 echo "== Atirax $@ ==" > $ERR
 
 nohup "$@" >>${OUT} 2>>${ERR} &
+
+log $1 "started"
 
 exit
