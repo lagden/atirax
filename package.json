@@ -1,10 +1,10 @@
 {
   "name": "atirax",
-  "description": "launch background process",
-  "version": "0.1.2",
+  "description": "Run a command or shell-script even after you logout",
+  "version": "1.0.0",
   "author": "Thiago Lagden <lagden@gmail.com>",
   "homepage": "https://github.com/lagden/atirax",
-  "keywords": ["background", "nohup", "binary"],
+  "keywords": ["run", "nohup", "background", "command", "shell-script"],
   "bin": {
     "atirax": "./bin/atirax"
   },

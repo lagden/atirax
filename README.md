@@ -1,27 +1,35 @@
 # Atirax
 
-Launch background process.
+Run a command or shell-script even after you logout.
 
-## Installation
 
-    $ npm install -g atirax
+## Install
+
+```
+$ npm i -g atirax
+```
 
 or
 
-    $ make install
+```
+$ make install
+```
 
 
 ## Usage
 
-    $ atirax mongod
+```
+$ atirax webserver -p 8008
+```
 
-## Log
+The `atirax` command will create 3 files into `.atirax` folder.
+See example below:
 
-Read logs
+- pid : .atirax/webserver_1513050298_pid.log
+- out : .atirax/webserver_1513050298_stdout.log
+- err : .atirax/webserver_1513050298_stderr.log
 
-### Out
 
-    $ tail -f .atirax/mongod_2013-07-26_191847_stdout.log
+## License
 
-### Error
-    $ tail -f .atirax/mongod_2013-07-26_191847_stderr.log
+MIT © [Thiago Lagden](http://lagden.in)

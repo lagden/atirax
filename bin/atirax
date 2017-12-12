@@ -1,28 +1,35 @@
 #!/bin/bash
 
-THIS=$(basename $0)
-DIR="$( cd -P "$( dirname "$0" )" && pwd )"
-CURR_FOLDER=`pwd`
-LOGFOLDER="${CURR_FOLDER}/.atirax"
-
-if [ ! -d $LOGFOLDER ]
-then
-    mkdir -p $LOGFOLDER
-fi
-
-log() {
-  printf "  \033[36m%10s\033[0m : \033[90m%s\033[0m\n" $1 $2
+# Unix Timestamp
+timestamp() {
+	date +"%s"
 }
 
-LOGFILENAME="${1##*/}_$(date +%F_%H%M%S)"
+# Log <type> <msg>
+log() {
+	printf "  \033[36m%10s\033[0m : \e[2m%s\e[22m\033[0m\n" $1 $2
+}
+
+# Exit with the given <msg ...>
+abort() {
+	printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
+}
+
+CURR_FOLDER=`pwd`
+LOGFOLDER="${CURR_FOLDER}/.atirax"
+LOGFILENAME="${1##*/}_$(timestamp)"
 OUT=${LOGFOLDER}/${LOGFILENAME}_stdout.log
 ERR=${LOGFOLDER}/${LOGFILENAME}_stderr.log
+PID=${LOGFOLDER}/${LOGFILENAME}_pid.log
+CMD=`which nohup`
 
-echo "== Atirax $@ ==" > $OUT
-echo "== Atirax $@ ==" > $ERR
+test ! -z $CMD || abort "nohup not found"
+test -d $LOGFOLDER || mkdir -p $LOGFOLDER
+$CMD "$@" >>${OUT} 2>>${ERR} & echo $! > $PID
 
-nohup "$@" >>${OUT} 2>>${ERR} &
+log "atirax" "$1"
+log "pid" "$PID"
+log "out" "$OUT"
+log "err" "$ERR"
 
-log $1 "started"
-
-exit
+exit 0
