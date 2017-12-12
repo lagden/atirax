@@ -25,9 +25,9 @@ $ atirax webserver -p 8008
 The `atirax` command will create 3 files into `.atirax` folder.  
 See example below:
 
-- pid : .atirax/webserver_1513050298_pid.log
-- out : .atirax/webserver_1513050298_stdout.log
-- err : .atirax/webserver_1513050298_stderr.log
+- pid: `.atirax/webserver_1513050298_pid.log`
+- out: `.atirax/webserver_1513050298_stdout.log`
+- err: `.atirax/webserver_1513050298_stderr.log`
 
 
 ## License
